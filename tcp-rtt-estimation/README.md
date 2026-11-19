@@ -15,10 +15,10 @@ Analyzed a captured TCP trace (`lab15_tcp_trace.pcap`) to measure round-trip tim
 ## What I Found
 - Measured RTT varied noticeably across the 10 packets (roughly 25–49 ms), reflecting normal jitter in network delay.
 - The Estimated RTT curve tracked the measured values but rose and fell more gradually, since it's a weighted average rather than a raw sample.
-- When RTT spikes above a threshold (e.g. 150 ms), it typically signals congestion or queuing delay. The Jacobson-Karels algorithm responds by increasing both EstimatedRTT and Timeout, which helps TCP avoid firing off unnecessary retransmissions during temporary slowdowns, then gradually tightens back up once the network settles.
+- In general, when RTT spikes well above its normal range (e.g. 150 ms here), it signals congestion or queuing delay. The Jacobson-Karels algorithm responds by increasing both EstimatedRTT and Timeout, which helps TCP avoid firing off unnecessary retransmissions during temporary slowdowns, then gradually tightens back up once the network settles.
 
 ## Key Takeaway
 This lab showed why TCP doesn't set a single fixed timeout value — a smoothed, adaptive estimate is what lets a connection stay reliable across changing network conditions without either timing out too aggressively or too slowly.
 
-<img width="790" height="379" alt="jacob-karel-table" src="https://github.com/user-attachments/assets/97507dd4-64be-4f54-89f2-f13128fb4f3e" />
+<img width="790" height="379" alt="jacob-karels-table" src="https://github.com/user-attachments/assets/97507dd4-64be-4f54-89f2-f13128fb4f3e" />
 <img width="627" height="527" alt="rtt-graph" src="https://github.com/user-attachments/assets/67655ea9-dfaf-40a7-a540-93cf9ac1ff6c" />
